@@ -1,0 +1,113 @@
+h1 {
+    background: #1cee2d;
+    color: red;
+    height: 200px;
+    width: 200px;
+    display: inline;
+    margin: 100px;
+    padding: 10px;
+    
+  }
+  a {
+    background: red;
+    height: 200px;
+    width: 200px;
+    display: block;
+  }
+.cajita{
+    background: blue;
+    width: 200px;
+    height: 200px;
+    padding: 20px;
+    border: 20px solid blueviolet;
+    margin: 30px;
+    outline: 10px solid green;
+}  
+
+/*margin y padding*/
+/*padding*/
+.box1{
+  height: 200px;
+  width: 200px;
+  background: blueviolet;
+  border: 20px solid red;
+  padding: 10px 20px;
+}
+/*margin*/
+.box2{
+  height: 200px;
+  width: 200px;
+  background: yellow;
+  border: 20px solid red;
+  margin: 20px 10px;
+}
+
+/*border*/
+[class*="box"]{
+  width: 250px;
+  height: 250px;
+  margin: 30px;
+}
+
+.box3{
+  background: greenyellow;
+  border-width: 20px 30px 10px 15px;
+
+  border-top-style:solid;
+  border-bottom-style:dotted;
+  border-right-style:groove;
+  border-left-style:dashed;
+
+  border-top-color: :black;
+  border-bottom-color:yellow;
+  border-right-color:red;
+  border-left-color:purple;
+}
+
+.box4{
+  background: silver;
+  border:10px dotted blue;
+}
+.box5{
+  background: silver;
+  border:10px double   blue;
+}
+.box6{
+  background: silver;
+  border:10px ridge blue;
+}
+.box7{
+  background: silver;
+  border:10px inset blue;
+}
+.box8{
+  background: silver;
+  border:10px outset blue;
+}
+.box9{
+  background: silver;
+  border:10px inherit blue;
+}
+
+/*outline*/
+
+[class*= outline]{
+  width: 250px;
+  height: 250px;
+  margin: 40px;
+}
+.outline1{
+  background: gold;
+  border: 20px solid violet;
+  outline: thick groove brown;
+  outline-offset: 20px;
+}
+.outline2{
+  background: cadetblue;
+  border: 20px solid yellow; 
+  margin-top: 100px;
+  outline-width: 20px;
+  outline-style: dashed ;
+  outline-color: skyblue;
+  outline-offset: 15px;
+}
