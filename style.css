@@ -24,7 +24,7 @@ h1 {
     outline: 10px solid green;
 }  
 
-/*margin y padding*/
+/*margin y padding 5*/
 /*padding*/
 .box1{
   height: 200px;
@@ -111,6 +111,29 @@ h1 {
   outline-color: skyblue;
   outline-offset: 15px;
 }
+
+/*position : el espacio que ocupa en el documento html*/
+
+ [class*=position]{
+  height: 250px;
+  width: 250px;
+  margin:100px;
+  font-size: center;
+ }
+ .position1{
+  background: green;
+  position: relative;
+  right: 100px;
+  top: 100px∫;
+
+ }
+
+
+
+
+/************/
+
+
 
 /* fondo*/
 html {
