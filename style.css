@@ -1,192 +1,187 @@
-h1 {
-    background: #1cee2d;
-    color: red;
-    height: 200px;
-    width: 200px;
-    display: inline;
-    margin: 100px;
-    padding: 10px;
-    
-  }
-  a {
-    background: red;
-    height: 200px;
-    width: 200px;
-    display: block;
-  }
-.cajita{
-    background: blue;
-    width: 200px;
-    height: 200px;
-    padding: 20px;
-    border: 20px solid blueviolet;
-    margin: 30px;
-    outline: 10px solid green;
-}  
-
-/*margin y padding 5*/
-/*padding*/
-.box1{
-  height: 200px;
-  width: 200px;
-  background: blueviolet;
-  border: 20px solid red;
-  padding: 10px 20px;
-}
-/*margin*/
-.box2{
-  height: 200px;
-  width: 200px;
-  background: yellow;
-  border: 20px solid red;
-  margin: 20px 10px;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
 }
 
-/*border*/
-[class*="box"]{
-  width: 250px;
-  height: 250px;
-  margin: 30px;
+
+header {
+    background-color: var(--bgDark);
+    clip-path: potygon(0 0, 100% 0, 100% 100%, 73% 94%, 0 100%);
 }
 
-.box3{
-  background: greenyellow;
-  border-width: 20px 30px 10px 15px;
 
-  border-top-style:solid;
-  border-bottom-style:dotted;
-  border-right-style:groove;
-  border-left-style:dashed;
+header nav .left a {
+    color: var(--white);
+    text-decoration: none;
+    margin-right: 2rem;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
 
-  border-top-color: :black;
-  border-bottom-color:yellow;
-  border-right-color:red;
-  border-left-color:purple;
 }
 
-.box4{
-  background: silver;
-  border:10px dotted blue;
-}
-.box5{
-  background: silver;
-  border:10px double   blue;
-}
-.box6{
-  background: silver;
-  border:10px ridge blue;
-}
-.box7{
-  background: silver;
-  border:10px inset blue;
-}
-.box8{
-  background: silver;
-  border:10px outset blue;
-}
-.box9{
-  background: silver;
-  border:10px inherit blue;
+header nav .left a:hover {
+    color: var(--primary);
 }
 
-/*outline*/
-
-[class*= outline]{
-  width: 250px;
-  height: 250px;
-  margin: 40px;
-}
-.outline1{
-  background: gold;
-  border: 20px solid violet;
-  outline: thick groove brown;
-  outline-offset: 20px;
-}
-.outline2{
-  background: cadetblue;
-  border: 20px solid yellow; 
-  margin-top: 100px;
-  outline-width: 20px;
-  outline-style: dashed ;
-  outline-color: skyblue;
-  outline-offset: 15px;
+header nav {
+    padding: 2rem 0
 }
 
-/*position : el espacio que ocupa en el documento html*/
-
- [class*=position]{
-  height: 250px;
-  width: 250px;
-  margin:100px;
-  font-size: center;
- }
- .position1{
-  background: green;
-  position: relative;
-  right: 100px;
-  top: 100px∫;
-
- }
-
-
-
-
-/************/
-
-
-
-/* fondo*/
-html {
-  height:100%;
+header nav .logo {
+    margin-right: 3rem;
 }
 
 body {
-  margin:0;
+    font-family: "Poppins",
+        sans-serif;
 }
 
-.bg {
-  animation:slide 3s ease-in-out infinite alternate;
-  background-image: linear-gradient(-60deg, #6c3 50%, #09f 50%);
-  bottom:0;
-  left:-50%;
-  opacity:.5;
-  position:fixed;
-  right:-50%;
-  top:0;
-  z-index:-1;
+.container {
+    max-width: 1152px;
+    padding: 0 15px;
+    margin: 0 auto;
 }
 
-.bg2 {
-  animation-direction:alternate-reverse;
-  animation-duration:4s;
+.hero {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
 }
 
-.bg3 {
-  animation-duration:5s;
+.hero .left img {
+    width: 400px;
+    height: 600px;
+    margin: 70px;
 }
 
-.content {
-  background-color:rgba(255,255,255,.8);
-  border-radius:.25em;
-  box-shadow:0 0 .25em rgba(0,0,0,.25);
-  box-sizing:border-box;
-  left:50%;
-  padding:10vmin;
-  position:fixed;
-  text-align:center;
-  top:50%;
-  transform:translate(-50%, -50%);
+.hero .right {
+    color: var(--white);
+    margin-top: -7rem;
 }
 
-h1 {
-  font-family:monospace;
+.hero .right h6 {
+    font-size: 1.6rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
 }
 
-@keyframes slide {
-  0% {
-    transform:translateX(-25%);
-  }
-  100% {
-    transform:translateX(25%);
-  }
+.hero .right h1 {
+    font-size: 4rem;
+    font-weight: 100;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+}
+
+.hero .right h1 span {
+    color: var(-primary);
+}
+
+.hero .right p {
+    line-height: 1.9;
+    margin-bottom: 2rem;
+}
+
+section {
+    padding: 6rem;
+}
+
+section.about h1 {
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+section.about h1 span {
+    color: var(—primary);
+}
+
+section.about h3 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.hero .right {
+    color: var(--white);
+    margin-top: -7rem;
+}
+
+.hero .right h6 {
+    font-size: 1.6rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.hero .right h1 {
+    font-size: 4rem;
+    font-weight: 100;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+}
+
+.hero .right h1 span {
+    color: var(--primary);
+}
+
+.hero .right p {
+    line-height: 1.9;
+    margin-bottom: 2rem;
+}
+
+section {
+    padding: 6rem;
+
+}
+
+section.about h1 {
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+}
+
+section.about h1 span {
+    color: var(--primary);
+}
+
+section.services .card-grid .card {
+    background: var(--white);
+    padding: 3rern 2rem;
+    position: relative;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+
+section.services .card-grid .card img {
+    position: absolute;
+    top: -1.5rem;
+    left: 50%;
+    transform: translateX(-50);
+    color: var();
+
+}
+
+section.services .card-grid .card h2 {
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+
+}
+
+section.services .card-grid .card p {
+    font-family: "Lato", sans-serif;
+    color: var(--seconday);
+    line-height: 1.6;
+}
+
+section.services .card-grid .card:hover {
+    background: var(--primary);
+}
+
+section.services .card-grid .card:hover h2 {
+    color: var(--white);
+}
+
+section.services .card-grid .card:hover p {
+    color: var(--white);
 }
