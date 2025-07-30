@@ -1,117 +1,390 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;400;700&family=Poppins:wght@200&display=swap"
-        rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet" />
-    <title>Portfolio</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CristianLoa - Portafolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.cdnfonts.com/css/neue-montreal" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Neue Montreal', sans-serif;
+      background-color: hsl(0, 0%, 95%);
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .dark-mode {
+      background-color: hsl(0, 0%, 5%);
+    }
+    .dark-mode .bg-white {
+      background-color: #27272a;
+    }
+    .dark-mode .text-gray-800 {
+      color: #f4f4f5;
+    }
+    .dark-mode .text-gray-600 {
+      color: #d4d4d8;
+    }
+    .dark-mode .bg-blue-700 {
+      background-color: #27272a;
+    }
+    .dark-mode .bg-blue-600 {
+      background-color: #27272a;
+    }
+    .dark-mode .text-blue-600 {
+      color: #ef4444;
+    }
+    .dark-mode .hover\:text-blue-800:hover {
+      color: #b91c1c;
+    }
+    .dark-mode .hover\:bg-blue-700:hover {
+      background-color: #3f3f46;
+    }
+    .dark-mode .text-gray-200 {
+      color: #e4e4e7;
+    }
+    .dark-mode .hover\:text-white:hover {
+      color: #f4f4f5;
+    }
+    .dark-mode #backToTop {
+      background-color: #ef4444;
+    }
+    .dark-mode #backToTop:hover {
+      background-color: #b91c1c;
+    }
+    .dark-mode #darkModeToggle i {
+      color: #ef4444;
+      text-shadow: 0 0 8px rgba(239, 68, 68, 0.7);
+    }
+    #darkModeToggle i {
+      color: #fff;
+      text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    }
+    .submenu {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      background-color: #000000;
+      border: 2px solid #ef4444;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      transform: translateY(10px);
+    }
+    .submenu.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Hover for desktop */
+    @media (min-width: 768px) {
+      .submenu-toggle:hover + .submenu,
+      .submenu:hover {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    #backToTop {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #3b82f6;
+      color: white;
+      padding: 12px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.2s, opacity 0.2s, background-color 0.2s;
+    }
+    #backToTop:hover {
+      transform: scale(1.1);
+    }
+    #darkModeToggle {
+      position: fixed;
+      bottom: 24px;
+      right: 6px;
+      background: transparent;
+      color: #fff;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    #darkModeToggle:hover {
+      color: #b91c1c;
+    }
+    .nav-link.active {
+      border-bottom: 2px solid #ef4444;
+    }
+    .animate-slide {
+      animation: slideIn 0.3s ease;
+    }
+    @keyframes slideIn {
+      from { transform: translateY(-10px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .project-card {
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+  </style>
 </head>
+<body class="min-h-screen flex flex-col">
+  <!-- Navegación -->
+  <nav class="bg-blue-700 text-white p-4 sticky top-0 z-50 shadow-lg" role="navigation" aria-label="Navegación principal">
+    <div class="container mx-auto flex justify-between items-center">
+      <a href="#inicio" class="text-2xl font-bold flex items-center" aria-label="Inicio">
+        <i class="fa-solid fa-code mr-2"></i> CristianLoa
+      </a>
+      <button id="menuToggle" class="md:hidden focus:outline-none focus:ring-2 focus:ring-blue-500" aria-label="Alternar menú">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        </svg>
+      </button>
+      <ul id="navMenu" class="hidden md:flex space-x-6" role="menubar">
+        <li><a href="#inicio" class="nav-link hover:text-gray-200 px-2 py-1 transition-colors" role="menuitem">Inicio</a></li>
+        <li class="relative" role="menuitem" aria-haspopup="true">
+          <a href="#proyectos" class="nav-link submenu-toggle hover:text-gray-200 px-2 py-1 transition-colors flex items-center">Proyectos <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></a>
+          <ul class="submenu absolute text-white p-2 mt-2 rounded shadow-lg w-48" role="menu">
+            <li><a href="#chat" class="block p-2 hover:bg-blue-700 rounded transition-colors" role="menuitem">App de Chat</a></li>
+            <li><a href="#nutricion" class="block p-2 hover:bg-blue-700 rounded transition-colors" role="menuitem">Calculadora de Nutrición</a></li>
+            <li><a href="#radio" class="block p-2 hover:bg-blue-700 rounded transition-colors" role="menuitem">App de Radio</a></li>
+          </ul>
+        </li>
+        <li><a href="#experiencia" class="nav-link hover:text-gray-200 px-2 py-1 transition-colors" role="menuitem">Experiencia</a></li>
+        <li><a href="#habilidades" class="nav-link hover:text-gray-200 px-2 py-1 transition-colors" role="menuitem">Habilidades</a></li>
+        <li><a href="#contacto" class="nav-link hover:text-gray-200 px-2 py-1 transition-colors" role="menuitem">Contacto</a></li>
+      </ul>
+    </div>
+  </nav>
 
-<body>
-    <header>
+  <!-- Contenido Principal -->
+  <div class="container mx-auto flex flex-col md:flex-row flex-grow p-6">
+    <!-- Barra Lateral -->
+    <aside class="w-full md:w-1/4 bg-white p-6 mb-6 md:mb-0 md:mr-6 rounded-lg shadow-md" role="complementary" aria-label="Barra lateral">
+      <h2 class="text-xl font-bold mb-4 text-gray-800">Enlaces Rápidos</h2>
+      <img src="https://source.unsplash.com/random/200x150?code" alt="Entorno de programación" loading="lazy" class="w-full h-32 object-cover rounded-md mb-4">
+      <ul class="space-y-3">
+        <li><a href="https://github.com/cristianloa" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors" aria-label="Perfil de GitHub">GitHub</a></li>
+        <li><a href="https://linkedin.com" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors" aria-label="Perfil de LinkedIn">LinkedIn</a></li>
+        <li><a href="#" class="text-blue-600 hover:text-blue-800 hover:underline transition-colors" aria-label="Descargar CV">Descargar CV</a></li>
+      </ul>
+    </aside>
 
-        <div class="container">
-            <nav class="flex items-centre justify-between">
-                <div class="left flex justfiy-right">
-                    <div class="logo"> <img src="/port/photo.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500" width="50px"
-                            alt="logo"> </div>
-                    <div> <a href="#">Home</a> <a href="#">About</a> <a href="#">Services</a> <a href="#">Blog</a></li>
-                        <a href="#">More</a>
-                    </div>
-                </div>
-                <div class="right"> <button class="btn btn-primary">Contact</button> </div>
-            </nav>
-        </div>
-        <div class="hero flex items-centre justify-between">
-            <div class="left flex-1 justify-center">
-                <img src="/port/photo.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
-            </div>
-            <div class="right flex-1">
-                <h6>CristianLoa</h6>
-                <h1>
-                    I'm a Web<br />
-                    <span>Developer</span>
-                </h1>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque
-                    illum nam nobis, minima laudantium fugit sequi nostrum quod impedit,
-                    beatae necessitatibus praesentium optio labore nemo!
-                </p>
-                <div><button class="btn btn-secondary">DOWNLOAD CV</button></div>
-            </div>
-        </div>
-    </header>
+    <!-- Sección Principal -->
+    <main class="w-full md:w-3/4 bg-white p-6 rounded-lg shadow-md" role="main">
+      <!-- Sección Inicio -->
+      <section id="inicio" class="mb-8">
+        <h1 class="text-3xl font-bold mb-4 text-gray-800">Bienvenido a Mi Portafolio</h1>
+        <p class="text-gray-600 leading-relaxed">
+          Hola, soy Cristian Loaiza Huallpa, un desarrollador web apasionado por crear aplicaciones modernas, responsivas y centradas en el usuario. Con experiencia en diseño web, desarrollo de aplicaciones móviles y producción multimedia, doy vida a las ideas con código limpio y diseños dinámicos. ¡Explora mis proyectos, experiencia y habilidades, y contáctame para colaborar en tu próximo gran proyecto!
+        </p>
+      </section>
 
-    <section class="about">
-        <div class="container flex items-centre">
-            <div class="left flex-1 justify-right">
-                <img src="/port/photo.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500" height="400px" alt="profile pic" />
-            </div>
-            <div class="right flex-1">
-                <h1>About <span>Me</span></h1>
-                <h3>Hello! I'm CODEWITHRANDOM.</h3>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque
-                    adipisci distinctio obcaecati aliquid, quia tempora quis optio
-                    repudiandae officia earum? Lorem ipsum dolor sit amet
-                    consectetur, adipisicing elit.
-                </p>
-                <div class="socials">
-                    <a href="#"><img src="/port/photo.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500" width="40px" /></a>
-                    <a href="#"><img
-                            src="https://images.pexels.com/photos/1382734/pexels-photo-1382734.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                            width="40px" /></a>
-                    <a href="#"><img
-                            src="https://images.pexels.com/photos/1462636/pexels-photo-1462636.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                            width="40px" /></a>
-                    <a href="#"><img
-                            src="https://images.pexels.com/photos/1758144/pexels-photo-1758144.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                            width="40px" /></a>
-                </div>
-            </div>
+      <!-- Sección Proyectos -->
+      <section id="proyectos" class="mb-8">
+        <h2 class="text-2xl font-bold mb-4 text-gray-800">Proyectos</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div id="chat" class="project-card bg-gray-50 p-4 rounded-lg shadow">
+            <h3 class="text-xl font-semibold mb-2 text-gray-800 flex items-center">
+              <i class="fa-solid fa-comment-dots mr-2"></i> App de Chat
+            </h3>
+            <p class="text-gray-600 mb-2">Una aplicación de chat en tiempo real con un diseño elegante, responsivo y soporte para modo oscuro.</p>
+            <a href="https://cristianloa.github.io/chat/" class="text-blue-600 hover:text-blue-800 hover:underline">Ver Proyecto</a>
+          </div>
+          <div id="nutricion" class="project-card bg-gray-50 p-4 rounded-lg shadow">
+            <h3 class="text-xl font-semibold mb-2 text-gray-800 flex items-center">
+              <i class="fa-solid fa-utensils mr-2"></i> Calculadora de Nutrición
+            </h3>
+            <p class="text-gray-600 mb-2">Una herramienta para crear planes de nutrición personalizados con funcionalidad de exportación a PDF.</p>
+            <a href="#" class="text-blue-600 hover:text-blue-800 hover:underline">Ver Proyecto</a>
+          </div>
+          <div id="radio" class="project-card bg-gray-50 p-4 rounded-lg shadow">
+            <h3 class="text-xl font-semibold mb-2 text-gray-800 flex items-center">
+              <i class="fa-solid fa-radio mr-2"></i> App de Radio
+            </h3>
+            <p class="text-gray-600 mb-2">Una aplicación de streaming de música con un espectro de audio circular y soporte para múltiples estaciones.</p>
+            <a href="#" class="text-blue-600 hover:text-blue-800 hover:underline">Ver Proyecto</a>
+          </div>
         </div>
-    </section>
-    <section class="services">
-        <div class="container">
-            <h1 class="services-head">Services</h1>
-            <p>All your digital needs... covered.</p>
-            <div class="card-grid">
-                <div class="card">
-                    <img src="https://source.unsplash.com/1600x900/?nature,water" />
-                    <h2>Graphic Desgin</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                        Nulla, debitis?
-                    </p>
-                </div>
-                <div class="card">
-                    <img src="https://source.unsplash.com/1600x900/?boy,men" />
-                    <h2>Web Development</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                        Nulla, debitis?
-                    </p>
-                </div>
-                <div class="card">
-                    <img src="https://source.unsplash.com/1600x900/?car,bike" />
-                    <h2>Content Writing</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                        Nulla, debitis?
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
+      </section>
 
+      <!-- Sección Experiencia -->
+      <section id="experiencia" class="mb-8">
+        <h2 class="text-2xl font-bold mb-4 text-gray-800">Experiencia</h2>
+        <div class="space-y-6">
+          <div class="bg-gray-50 p-4 rounded-lg shadow">
+            <h3 class="text-xl font-semibold mb-2 text-gray-800 flex items-center">
+              <i class="fa-solid fa-globe mr-2"></i> Desarrollador Web y Especialista Multimedia, CristianLoaiza.com
+            </h3>
+            <p class="text-gray-600 mb-2">2019 - Presente</p>
+            <p class="text-gray-600">
+              Diseñé y desarrollé sitios web responsivos y aplicaciones móviles utilizando diversos CMS. Especializado en diseño web personalizado, publicación de aplicaciones en múltiples tiendas y producción de video de ciclo completo (preproducción a postproducción). Proveí servicios de marca blanca para agencias, entregando soluciones digitales personalizadas de alta calidad.
+            </p>
+            <a href="https://cristianloaiza.com" class="text-blue-600 hover:text-blue-800 hover:underline">Visitar Sitio Web</a>
+          </div>
+          <div class="bg-gray-50 p-4 rounded-lg shadow">
+            <h3 class="text-xl font-semibold mb-2 text-gray-800 flex items-center">
+              <i class="fa-solid fa-code mr-2"></i> Desarrollador Web Freelance
+            </h3>
+            <p class="text-gray-600 mb-2">2017 - Presente</p>
+            <p class="text-gray-600">
+              Colaboré con clientes y agencias para crear aplicaciones web responsivas, diseños para redes sociales y contenido multimedia. Entregué proyectos enfocados en la experiencia del usuario, código limpio y tendencias de diseño modernas, utilizando tecnologías como HTML, CSS, JavaScript y plataformas CMS.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección Habilidades -->
+      <section id="habilidades" class="mb-8">
+        <h2 class="text-2xl font-bold mb-4 text-gray-800">Habilidades</h2>
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div class="flex items-center">
+            <i class="fa-brands fa-html5 text-2xl mr-2 text-red-500"></i>
+            <span class="text-gray-600">HTML5</span>
+          </div>
+          <div class="flex items-center">
+            <i class="fa-brands fa-css3-alt text-2xl mr-2 text-blue-500"></i>
+            <span class="text-gray-600">CSS3</span>
+          </div>
+          <div class="flex items-center">
+            <i class="fa-brands fa-js text-2xl mr-2 text-yellow-500"></i>
+            <span class="text-gray-600">JavaScript</span>
+          </div>
+          <div class="flex items-center">
+            <i class="fa-brands fa-react text-2xl mr-2 text-cyan-500"></i>
+            <span class="text-gray-600">React</span>
+          </div>
+          <div class="flex items-center">
+            <i class="fa-brands fa-python text-2xl mr-2 text-blue-700"></i>
+            <span class="text-gray-600">Python</span>
+          </div>
+          <div class="flex items-center">
+            <i class="fa-solid fa-database text-2xl mr-2 text-gray-600"></i>
+            <span class="text-gray-600">SQL</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección Contacto -->
+      <section id="contacto">
+        <h2 class="text-2xl font-bold mb-4 text-gray-800">Contáctame</h2>
+        <div class="bg-gray-50 p-4 rounded-lg shadow">
+          <form class="space-y-4">
+            <div>
+              <label for="name" class="block text-gray-700">Nombre</label>
+              <input type="text" id="name" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+            <div>
+              <label for="email" class="block text-gray-700">Correo Electrónico</label>
+              <input type="email" id="email" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+            </div>
+            <div>
+              <label for="message" class="block text-gray-700">Mensaje</label>
+              <textarea id="message" class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" rows="4" required></textarea>
+            </div>
+            <button type="button" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-800 transition-colors">Enviar Mensaje</button>
+          </form>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- Pie de Página -->
+  <footer class="bg-blue-700 text-white p-6 mt-6" role="contentinfo">
+    <div class="container mx-auto text-center">
+      <p class="mb-2">&copy; 2025 Cristian Loaiza Huallpa. Todos los derechos reservados.</p>
+      <div class="flex justify-center space-x-4">
+        <a href="#" class="text-gray-200 hover:text-white transition-colors" aria-label="Política de Privacidad">Política de Privacidad</a>
+        <a href="#" class="text-gray-200 hover:text-white transition-colors" aria-label="Términos de Servicio">Términos de Servicio</a>
+        <a href="#contacto" class="text-gray-200 hover:text-white transition-colors" aria-label="Contáctame">Contáctame</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botón Volver Arriba -->
+  <button id="backToTop" title="Volver Arriba" aria-label="Volver Arriba" class="focus:outline-none focus:ring-2 focus:ring-blue-500">&uarr;</button>
+
+  <!-- Botón Modo Oscuro -->
+  <button id="darkModeToggle" class="fixed bottom-24 right-6 focus:outline-none" aria-label="Alternar Modo Oscuro">
+    <i class="fas fa-sun"></i>
+  </button>
+
+  <script>
+    // Persistir Modo Oscuro
+    const darkModeToggle = document.getElementById('darkModeToggle');
+    const darkModeIcon = darkModeToggle.querySelector('i');
+    if (localStorage.getItem('darkMode') === 'enabled') {
+      document.body.classList.add('dark-mode');
+      darkModeIcon.classList.replace('fa-sun', 'fa-moon');
+    }
+    darkModeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      if (document.body.classList.contains('dark-mode')) {
+        darkModeIcon.classList.replace('fa-sun', 'fa-moon');
+        localStorage.setItem('darkMode', 'enabled');
+      } else {
+        darkModeIcon.classList.replace('fa-moon', 'fa-sun');
+        localStorage.setItem('darkMode', 'disabled');
+      }
+    });
+
+    // Alternar Menú Móvil
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('hidden');
+      navMenu.classList.toggle('flex');
+      navMenu.classList.toggle('flex-col');
+      navMenu.classList.toggle('absolute');
+      navMenu.classList.toggle('top-16');
+      navMenu.classList.toggle('left-0');
+      navMenu.classList.toggle('w-full');
+      navMenu.classList.toggle('bg-blue-700');
+      navMenu.classList.toggle('p-4');
+      navMenu.classList.toggle('animate-slide');
+    });
+
+    // Alternar Submenú para Móviles (basado en clic)
+    const submenuToggles = document.querySelectorAll('.submenu-toggle');
+    submenuToggles.forEach(toggle => {
+      toggle.addEventListener('click', (e) => {
+        if (window.innerWidth < 768) { // Solo para móviles
+          e.preventDefault();
+          const submenu = toggle.nextElementSibling;
+          const isActive = submenu.classList.contains('active');
+          
+          // Cerrar todos los submenús
+          document.querySelectorAll('.submenu').forEach(menu => {
+            menu.classList.remove('active');
+          });
+          
+          // Alternar el submenú clicado solo si no estaba activo
+          if (!isActive) {
+            submenu.classList.add('active');
+          }
+        }
+      });
+    });
+
+    // Resaltar Enlace de Navegación Activo (simulado)
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks[0].classList.add('active'); // Ejemplo: Inicio como activo
+
+    // Botón Volver Arriba
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTop.style.display = 'block';
+      } else {
+        backToTop.style.display = 'none';
+      }
+    });
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  </script>
 </body>
-
 </html>
